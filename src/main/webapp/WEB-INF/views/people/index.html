@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <title>All people</title>
     <style>
-        body {padding: 10px}
+        body, div {padding: 10px}
     </style>
 </head>
 <body>
 
 <div th:each="person : ${people}">
-    <a th:href="@{/people/{id}(id=${person.getId()})}" th:text="${person.getName()}">user</a>
+    <a th:href="@{/people/{id}(id=${person.getId()})}"
+       th:text="${person.getName() + ', ' + person.getAge()}">user</a>
 </div>
 
 <br/>

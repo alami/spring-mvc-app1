@@ -16,8 +16,8 @@
 <table class="bbb" >
     <tr>
         <td class="bbb" th:text="${person.getId()}">VALUE</td>
-        <td class="bbb" th:text="${person.getName()}">VALUE</td>
-
+        <td class="bbb" th:text="${person.getName() + ', ' + person.getAge()}">VALUE</td>
+        <td th:text="${'Email: ' + person.getEmail()}">VALUE</td>
         <td class="bbb" ><a th:href="@{/people/{id}/edit(id=${person.getId()})}">Edit</a></td>
         <td class="bbb" >
         <form th:method="DELETE" th:action="@{/people/{id}(id=${person.getId()})}">
