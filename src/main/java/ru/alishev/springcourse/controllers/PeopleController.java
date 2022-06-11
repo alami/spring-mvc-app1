@@ -7,6 +7,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 //import ru.alishev.springcourse.dao.peopleService;
 import ru.alishev.springcourse.models.Person;
+import ru.alishev.springcourse.services.ItemService;
 import ru.alishev.springcourse.services.PeopleService;
 
 import javax.validation.Valid;
@@ -17,17 +18,23 @@ import javax.validation.Valid;
 @Controller
 @RequestMapping("/people")
 public class PeopleController {
-
     private final PeopleService peopleService;
+    private final ItemService itemService;
 
     @Autowired
-    public PeopleController(PeopleService peopleService) {
+    public PeopleController(PeopleService peopleService, ItemService itemService) {
         this.peopleService = peopleService;
+        this.itemService = itemService;
     }
 
     @GetMapping()
     public String index(Model model) {
         model.addAttribute("people", peopleService.findAll());
+
+        itemService.findByItemName("AirPods");
+        itemService.findByOwner(peopleService.findAll().get(0));
+        peopleService.test();
+
         return "people/index";
     }
 
