@@ -1,3 +1,4 @@
+src/main/resources/hibernate.properties
 .env
 .idea/
 target/
